@@ -1,0 +1,1 @@
+appId: com.atlas.desktop\nproductName: ATLAS Desktop\ndirectories:\n  output: dist\nfiles:\n  - electron/**/*\n  - build/**/*\n  - \"!**/node_modules/**/*\"\nnsis:\n  oneClick: false\n  allowToChangeInstallationDirectory: true\nwin:\n  target: nsis

@@ -34,6 +34,7 @@ function App() {
       }
       setMessages(prev => [...prev, aiResponse])
     } catch (error) {
+      // Só mostra erro se realmente houve falha real (rede/JSON/status não-2xx)
       const errorMsg = {
         id: Date.now() + 1,
         text: 'Erro ao conectar com ATLAS',
@@ -42,6 +43,7 @@ function App() {
       }
       setMessages(prev => [...prev, errorMsg])
     }
+
   }
 
   return (

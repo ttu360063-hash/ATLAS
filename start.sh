@@ -32,7 +32,8 @@ export LITELLM_MASTER_KEY="${LITELLM_MASTER_KEY:-${OLLAMA_API_KEY}}"
 
 MODEL="${OLLAMA_MODEL_NAME:-${OLLAMA_MODEL:-qwen2.5-coder:7b}}"
 
-litellm --model "ollama/${MODEL}" --port 4000 &
+litellm --model "ollama/${MODEL}" --port 4000 --disable_auth &
+
 LITELLM_PID=$!
 
 echo "Aguardando LiteLLM subir..."

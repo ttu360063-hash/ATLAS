@@ -7,7 +7,10 @@ function getEnv(name, fallback) {
 
 async function generateResponse(fullPrompt, { userId } = {}) {
   const baseUrl = getEnv('OLLAMA_BASE_URL', 'http://localhost:4000/v1/chat/completions');
-  const apiKey = getEnv('OLLAMA_API_KEY', getEnv('OPENAI_API_KEY', ''));
+  // LiteLLM (OpenAI-compatible) costuma exigir Authorization Bearer.
+  // start.sh exporta OLLAMA_API_KEY como proxy key (LITELLM_MASTER_KEY).
+  const apiKey = getEnv('OLLAMA_API_KEY', getEnv('LITELLM_MASTER_KEY', getEnv('OPENAI_API_KEY', '')));
+
   const model = getEnv('OLLAMA_MODEL', DEFAULT_MODEL);
 
 

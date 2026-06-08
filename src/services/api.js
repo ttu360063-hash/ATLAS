@@ -1,13 +1,14 @@
 export async function sendMessage(message) {
   try {
-    const response = await fetch('http://localhost:3000/atlas/chat', {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    const response = await fetch(`${apiUrl}/atlas/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        userId: "1",
-        message: message
+        userId: '1',
+        message,
       }),
     });
 
@@ -21,3 +22,4 @@ export async function sendMessage(message) {
     throw new Error('Falha na conexão com o backend');
   }
 }
+

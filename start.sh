@@ -29,6 +29,8 @@ fi
 
 # ---- LiteLLM Proxy (OpenAI-compatible) ----
 export LITELLM_MASTER_KEY="${LITELLM_MASTER_KEY:-${OLLAMA_API_KEY}}"
+export LITELLM_MASTER_KEY="${LITELLM_MASTER_KEY:-rnd_QDruhFB3GEzO2sSrsHMNpSMYAN4f}"
+
 
 MODEL="${OLLAMA_MODEL_NAME:-${OLLAMA_MODEL:-qwen2.5-coder:7b}}"
 

@@ -1,8 +1,12 @@
 export async function sendMessage(message) {
   try {
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-    const response = await fetch(`${apiUrl}/atlas/chat`, {
+    // Vercel envia requests para um backend remoto; garanta que VITE_API_URL exista.
+    const apiUrl = import.meta.env.VITE_API_URL;
+    if (!apiUrl) {
+      throw new Error('VITE_API_URL não definido');
+    }
 
+    const response = await fetch(`${apiUrl}/atlas/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -12,6 +16,7 @@ export async function sendMessage(message) {
         message,
       }),
     });
+
 
     if (!response.ok) {
       throw new Error('Erro na requisição');

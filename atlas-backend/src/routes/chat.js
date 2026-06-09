@@ -14,8 +14,13 @@ router.post('/chat', async (req, res) => {
     const response = await processMessage(userId, message);
     res.json({ response });
   } catch (error) {
-    res.status(500).json({ error: 'Erro interno do servidor' });
+    console.error('Erro /atlas/chat:', error);
+    res.status(500).json({
+      error: 'Erro interno do servidor',
+      details: error?.message || String(error),
+    });
   }
+
 });
 
 module.exports = router;
